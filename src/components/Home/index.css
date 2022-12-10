@@ -1,0 +1,39 @@
+.headerBar {
+    height: 100px;
+    min-height: 100px;
+    width: 100%;
+    position: relative;
+    display: block;
+}
+
+.header {
+   left: 6vw;
+   position: absolute;
+}
+
+.optionsContainer {
+    display: flex;
+    margin: 15vw 0;
+    gap: 20px;
+    justify-content: center;
+}
+
+.optionsCta {
+    background-color: #008287;
+    color: #fff;
+    min-width: 220px;
+    text-align: left;
+    padding: 10px 20px;
+    height: auto;
+    font-family: 'Segoe UI Semilight', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    font-size: 11pt;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    border: none;
+}
+
+.imgClass {
+    height: 18px;
+    width: 18px;
+}

@@ -1,0 +1,8 @@
+.mapViewContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    right: 4vw;
+    top: 4vh;
+}

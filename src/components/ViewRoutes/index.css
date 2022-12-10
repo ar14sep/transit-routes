@@ -1,0 +1,130 @@
+.headerBar {
+    height: 100px;
+    min-height: 100px;
+    width: 100%;
+    position: relative;
+    display: block;
+}
+
+.header {
+   left: 6vw;
+   text-align: center;
+   position: absolute;
+}
+
+.optionsContainer {
+    display: flex;
+    margin: 15vw 0;
+    gap: 20px;
+    justify-content: center;
+}
+
+.optionsCta {
+    background-color: #008287;
+    color: #fff;
+    min-width: 220px;
+    text-align: left;
+    padding: 10px 20px;
+    height: auto;
+    font-family: 'Segoe UI Semilight', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    font-size: 11pt;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    border: none;
+}
+
+.imgClass {
+    height: 18px;
+    width: 18px;
+}
+
+.viewContainer {
+
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 12px;
+  }
+
+.routeView {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    padding-top: 0px;
+    text-align: left;
+}
+
+.routeDetails {
+    text-align: left;
+    padding-left: 16px;
+    padding-right: 22px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.searchBox {
+    float: left;
+    padding: 12px;
+    margin: 18px;
+    width: 30%;
+    min-width: 30%;
+    min-height: 32vh;
+    background-color: #c5f3fd;
+    border-radius: 12px;
+    position: relative;
+}
+
+.searchBoxHeader {
+     text-align: left;
+     font-size: 18px;
+     font-weight: 600;
+     margin-bottom: 0;
+     margin-left: 18px;
+}
+
+.inputClass {
+    border: 1px solid #3bc4ed;
+    border-radius: 6px;
+    padding: 2px;
+    height: 34px;
+    width: 90%;
+    margin-top: 12px;
+    padding: 4px;
+    padding-left: 12px;
+}
+
+.listModal {
+    display: block;
+    position: absolute;
+    width: 89%;
+    top: 110px;
+    left: 24px;
+    padding: 12px;
+    padding-bottom: 0px;
+    border-radius: 4px;
+    box-shadow: 2px 4px 6px 2px rgb(0 0 0 / 10%), 0 12px 11px 2px rgb(0 0 0 / 10%);
+    border: 1px solid #d6d6d6;
+    overflow: hidden;
+    z-index: 40;
+    background-color: #fff;
+    box-sizing: border-box;
+    border: none;
+}
+
+.listItem {
+    text-align: left;
+    padding-bottom: 12px;
+}
+
+.mapContainer {
+    display: inline-block;
+    height: 32vw;
+    width: 50vw;
+}
