@@ -1,0 +1,13 @@
+.errorMessage {
+    color: red;
+    font-style: italic;
+    font-size: 16px;
+    margin-top: 24px;
+}
+
+.successMessage {
+    margin-top: 24px;
+    color: green;
+    font-style: italic;
+    font-size: 16px;
+}

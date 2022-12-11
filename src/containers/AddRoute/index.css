@@ -7,7 +7,7 @@
 }
 
 .header {
-   left: 6vw;
+   left: 2vw;
    position: absolute;
 }
 
@@ -34,12 +34,18 @@
 
 .stopItem {
     border: 0.2px solid;
+    padding: 8px;
+    margin: 4px;
     width: 72%;
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .stopsHeader {
-    background-color:gray;
+    color: white;
+    background-color: darkcyan;
     padding: 12px;
 }
 
@@ -51,6 +57,24 @@
     display: inline-block;
     margin-right: 12px;
   }
+
+.dotEmpty {
+    height: 12px;
+    width: 12px;
+    border: 0.5px solid black;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 12px;
+}
+
+.dotSelected {
+    height: 12px;
+    width: 12px;
+    background-color: green;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 12px;
+}
 
 .route {
     display: flex;
@@ -81,9 +105,13 @@
 }
 
 .buttonStyles {
-    height: 40px;
-    width: 162px;
+    height: 32px;
+    width: 120px;
     border: none;
     color: white;
     background-color: teal;
+}
+
+.resetButton {
+    background-color: chocolate;
 }

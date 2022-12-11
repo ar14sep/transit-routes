@@ -1,11 +1,11 @@
 import './App.css';
-import Home from './components/Home';
 import { useEffect, useState } from 'react';
-import AddRoute from './components/AddRoute';
-import ViewRoutes from './components/ViewRoutes';
+import AddRoute from './containers/AddRoute';
+import ViewRoutes from './containers/ViewRoutes';
+import Home from './containers/Home';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
-  const [viewType, setViewType] = useState("home");
 
   const [routes, setRoutes] = useState([]);
 
@@ -18,20 +18,27 @@ function App() {
     }
   }, [])
 
-  const updateRoute = (newRoute) => {
+  const addRoute = (newRoute) => {
     const x = [...routes, newRoute];
     setRoutes(x);
     sessionStorage.setItem("routes", JSON.stringify([...routes, newRoute]));
   }
 
-  const updatePageView = (type) => {
-    setViewType(type);
-  }
+  const deleteRoute = (id) => {
+    const newRoutes = routes.filter((item) => item.routeId !== id);
+    setRoutes([...newRoutes]);
+    window.location.reload();
+    sessionStorage.setItem("routes", JSON.stringify(newRoutes));
+  };
+
   return (
     <div className="App">
-      {viewType == "addRoute" ? <AddRoute routes={routes} updateRoute={updateRoute} onLogoClick={updatePageView} /> : null}
-      {viewType == "viewRoutes" ? <ViewRoutes routes={routes} onLogoClick={updatePageView} /> : null}
-      {viewType == "home" ? <Home onButtonClick={updatePageView} /> : null}
+
+      <Routes>
+        <Route path="/" element={ <Home /> } />
+        <Route path="add" element={ <AddRoute routes={routes} addRoute={addRoute} /> } />
+        <Route path="view" element={ <ViewRoutes routes={routes} deleteRoute={deleteRoute} /> } />
+      </Routes>
     </div>
   );
 }
