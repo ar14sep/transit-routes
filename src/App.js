@@ -4,10 +4,12 @@ import AddRoute from './containers/AddRoute';
 import ViewRoutes from './containers/ViewRoutes';
 import Home from './containers/Home';
 import { Route, Routes } from 'react-router-dom';
+import { RouteProvider } from './contextProvider';
 
 function App() {
 
   const [routes, setRoutes] = useState([]);
+  // This state can also be handled using redux
 
   useEffect(() => {
     const storedRoutes = sessionStorage.getItem("routes");
@@ -18,10 +20,24 @@ function App() {
     }
   }, [])
 
-  const addRoute = (newRoute) => {
+  const addNewRoute = (newRoute) => {
     const x = [...routes, newRoute];
     setRoutes(x);
     sessionStorage.setItem("routes", JSON.stringify([...routes, newRoute]));
+  }
+
+  const updateRoute = (route) => {
+    const index = routes.findIndex(item=> item.routeId === route.routeId);
+
+    if(index >= 0){
+      const newRoutes = [
+        ...routes.slice(0,index),
+        Object.assign({}, routes[index], route),
+        ...routes.slice(index+1)
+     ]
+     setRoutes(newRoutes);
+     sessionStorage.setItem("routes", JSON.stringify(newRoutes));
+    }
   }
 
   const deleteRoute = (id) => {
@@ -36,8 +52,16 @@ function App() {
 
       <Routes>
         <Route path="/" element={ <Home /> } />
-        <Route path="add" element={ <AddRoute routes={routes} addRoute={addRoute} /> } />
-        <Route path="view" element={ <ViewRoutes routes={routes} deleteRoute={deleteRoute} /> } />
+        <Route path="add" element={ 
+          <RouteProvider routes={routes} addNewRoute={addNewRoute} updateRoute={updateRoute}>
+            <AddRoute /> 
+          </RouteProvider>
+        }/>
+        <Route path="view" element={
+          <RouteProvider routes={routes} deleteRoute={deleteRoute} >
+           <ViewRoutes /> 
+          </RouteProvider>
+        } />
       </Routes>
     </div>
   );

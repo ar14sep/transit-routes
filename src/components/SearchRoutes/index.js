@@ -1,11 +1,14 @@
 import { useState } from "react";
+import { useRoutesContext } from "../../contextProvider";
 import "./index.css";
 
-export function SearchRoutes({routes = [], deleteRoute, selectedRoute, setSelectedRoute}) {
+export function SearchRoutes({selectedRoute, setSelectedRoute}) {
 
   const [inputVal, setInputVal] = useState("");
 
   const [filtered, setFiltered] = useState([]);
+
+  const {routes = [], deleteRoute} = useRoutesContext() || {};
 
   const { stops: stopsToShow = [] } = selectedRoute;
 
@@ -28,6 +31,10 @@ export function SearchRoutes({routes = [], deleteRoute, selectedRoute, setSelect
     setSelectedRoute(item);
     setFiltered([]);
   }
+
+  const onUpdateClick = (routeId) => {
+     window.location.href = `/add?routeId=${routeId}`;
+  }
     
 
   return (
@@ -40,7 +47,7 @@ export function SearchRoutes({routes = [], deleteRoute, selectedRoute, setSelect
           onChange={onInputChange}
         />
 
-        {routes.length == 0 ? <div>
+        {routes.length === 0 ? <div>
             No Routes available please create first
         </div> :null}
         
@@ -48,7 +55,7 @@ export function SearchRoutes({routes = [], deleteRoute, selectedRoute, setSelect
             <div className='listModal'>
             {filtered.map((item) => (
                 <div key={item.id} onClick={() => onRouteClick(item)} className="listItem">
-                {item.name}
+                {item.name}-{item.direction}
                 </div>
             ))}
             </div> 
@@ -58,7 +65,10 @@ export function SearchRoutes({routes = [], deleteRoute, selectedRoute, setSelect
         <div className='routeDetails'>
             <p>Route Name: {selectedRoute.name}</p>
             <p>Route Direction: {selectedRoute.direction}</p>
-            <p className="deleteText" onClick={() => deleteRoute(selectedRoute.routeId)}>Delete</p>
+        </div>
+        <div className='routeDetails'>
+            <p className="deleteText" onClick={() => deleteRoute(selectedRoute.routeId)}>Delete Route</p>
+            <p className="deleteText" onClick={() => onUpdateClick(selectedRoute.routeId)}>Update Route</p>
         </div>
         <div className='routeView'>
             <span>Stops:</span>

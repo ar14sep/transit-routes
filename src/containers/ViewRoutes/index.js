@@ -4,7 +4,7 @@ import Map from '../../components/Maps';
 import { SearchRoutes } from '../../components/SearchRoutes';
 import { useState } from 'react';
 
-function ViewRoutes({routes, deleteRoute}) {
+function ViewRoutes() {
 
   const [selectedRoute, setSelectedRoute] = useState({});
 
@@ -16,7 +16,7 @@ function ViewRoutes({routes, deleteRoute}) {
           </h1>
         </div>
         <div className='viewContainer'>
-            <SearchRoutes routes={routes} deleteRoute={deleteRoute} selectedRoute={selectedRoute} setSelectedRoute={setSelectedRoute} />
+            <SearchRoutes selectedRoute={selectedRoute} setSelectedRoute={setSelectedRoute} />
             <Map selectedRoute={selectedRoute} />
         </div>
     </div>
